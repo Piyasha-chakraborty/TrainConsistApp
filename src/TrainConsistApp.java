@@ -1,76 +1,42 @@
-class CargoSafetyException extends RuntimeException {
-
-    public CargoSafetyException(String message) {
-        super(message);
-    }
-}
-
-class GoodsBogie {
-
-    String shape;
-    String cargo;
-
-    public GoodsBogie(String shape) {
-        this.shape = shape;
-    }
-
-    // Cargo assignment method
-    public void assignCargo(String cargo) {
-
-        // Unsafe condition
-        if (shape.equals("Rectangular")
-                && cargo.equals("Petroleum")) {
-
-            throw new CargoSafetyException(
-                    "Unsafe Cargo Assignment Detected!"
-            );
-        }
-
-        this.cargo = cargo;
-
-        System.out.println(
-                "Cargo Assigned Successfully: "
-                        + cargo + " -> " + shape + " Bogie"
-        );
-    }
-}
-
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
         System.out.println("=================================================");
-        System.out.println(" UC15 - Safe Cargo Assignment Using try-catch ");
+        System.out.println(" UC16 - Bubble Sort Passenger Bogie Capacities ");
         System.out.println("=================================================\n");
 
-        // Safe assignment
-        GoodsBogie cylindrical =
-                new GoodsBogie("Cylindrical");
+        // Array of passenger bogie capacities
+        int[] capacities = {72, 56, 24, 70, 60};
 
-        // Unsafe assignment
-        GoodsBogie rectangular =
-                new GoodsBogie("Rectangular");
+        System.out.println("Before Sorting:");
 
-        try {
-
-            cylindrical.assignCargo("Petroleum");
-
-            rectangular.assignCargo("Petroleum");
-
-        } catch (CargoSafetyException e) {
-
-            System.out.println("\nException Caught:");
-            System.out.println(e.getMessage());
-
-        } finally {
-
-            System.out.println(
-                    "\nCargo validation process completed."
-            );
+        for (int value : capacities) {
+            System.out.print(value + " ");
         }
 
-        System.out.println(
-                "\nApplication continues safely..."
-        );
+        // Bubble Sort Logic
+        for (int i = 0; i < capacities.length - 1; i++) {
+
+            for (int j = 0; j < capacities.length - i - 1; j++) {
+
+                // Compare adjacent values
+                if (capacities[j] > capacities[j + 1]) {
+
+                    // Swap values
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("\n\nAfter Sorting:");
+
+        for (int value : capacities) {
+            System.out.print(value + " ");
+        }
+
+        System.out.println("\n\nUC16 bubble sort completed...");
     }
 }
