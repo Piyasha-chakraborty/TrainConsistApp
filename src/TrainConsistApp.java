@@ -3,49 +3,59 @@ public class TrainConsistApp {
     public static void main(String[] args) {
 
         System.out.println("=================================================");
-        System.out.println(" UC18 - Linear Search for Bogie ID ");
+        System.out.println(" UC20 - Exception Handling During Search ");
         System.out.println("=================================================\n");
 
-        // Array of bogie IDs
-        String[] bogieIds = {
-                "BG101",
-                "BG205",
-                "BG309",
-                "BG412",
-                "BG550"
-        };
+        // Empty bogie collection
+        String[] bogieIds = {};
 
         // Search key
-        String searchKey = "BG309";
+        String searchKey = "BG101";
 
-        boolean found = false;
+        try {
 
-        // Linear Search
-        for (String id : bogieIds) {
+            // State validation
+            if (bogieIds.length == 0) {
 
-            if (id.equals(searchKey)) {
-
-                found = true;
-
-                // Stop search immediately
-                break;
+                throw new IllegalStateException(
+                        "Cannot perform search. No bogies available in the train."
+                );
             }
+
+            // Search logic
+            boolean found = false;
+
+            for (String id : bogieIds) {
+
+                if (id.equals(searchKey)) {
+
+                    found = true;
+                    break;
+                }
+            }
+
+            // Display result
+            if (found) {
+
+                System.out.println(
+                        "Bogie Found : " + searchKey
+                );
+
+            } else {
+
+                System.out.println(
+                        "Bogie Not Found : " + searchKey
+                );
+            }
+
+        } catch (IllegalStateException e) {
+
+            System.out.println("Exception Caught:");
+            System.out.println(e.getMessage());
         }
 
-        // Display result
-        if (found) {
-
-            System.out.println(
-                    "Bogie Found : " + searchKey
-            );
-
-        } else {
-
-            System.out.println(
-                    "Bogie Not Found : " + searchKey
-            );
-        }
-
-        System.out.println("\nUC18 linear search completed...");
+        System.out.println(
+                "\nUC20 defensive validation completed..."
+        );
     }
 }
