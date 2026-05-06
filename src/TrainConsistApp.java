@@ -1,42 +1,33 @@
+import java.util.Arrays;
+
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
         System.out.println("=================================================");
-        System.out.println(" UC16 - Bubble Sort Passenger Bogie Capacities ");
+        System.out.println(" UC17 - Sort Bogie Names Using Arrays.sort() ");
         System.out.println("=================================================\n");
 
-        // Array of passenger bogie capacities
-        int[] capacities = {72, 56, 24, 70, 60};
+        // Array of bogie names
+        String[] bogieNames = {
+                "Sleeper",
+                "AC Chair",
+                "First Class",
+                "General",
+                "Luxury"
+        };
 
+        // Display before sorting
         System.out.println("Before Sorting:");
+        System.out.println(Arrays.toString(bogieNames));
 
-        for (int value : capacities) {
-            System.out.print(value + " ");
-        }
+        // Sort using Arrays.sort()
+        Arrays.sort(bogieNames);
 
-        // Bubble Sort Logic
-        for (int i = 0; i < capacities.length - 1; i++) {
+        // Display after sorting
+        System.out.println("\nAfter Sorting:");
+        System.out.println(Arrays.toString(bogieNames));
 
-            for (int j = 0; j < capacities.length - i - 1; j++) {
-
-                // Compare adjacent values
-                if (capacities[j] > capacities[j + 1]) {
-
-                    // Swap values
-                    int temp = capacities[j];
-                    capacities[j] = capacities[j + 1];
-                    capacities[j + 1] = temp;
-                }
-            }
-        }
-
-        System.out.println("\n\nAfter Sorting:");
-
-        for (int value : capacities) {
-            System.out.print(value + " ");
-        }
-
-        System.out.println("\n\nUC16 bubble sort completed...");
+        System.out.println("\nUC17 sorting completed...");
     }
 }
