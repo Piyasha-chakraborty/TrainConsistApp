@@ -1,35 +1,54 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+class Bogie {
+
+    String name;
+    int capacity;
+
+    public Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " -> Capacity: " + capacity;
+    }
+}
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
         System.out.println("======================================");
-        System.out.println(" UC6 - Map Bogie to Capacity ");
+        System.out.println(" UC7 - Sort Bogies by Capacity ");
         System.out.println("======================================\n");
 
-        // Create HashMap
-        // Key = Bogie Name
-        // Value = Capacity
+        // Create List of Bogies
+        List<Bogie> bogies = new ArrayList<>();
 
-        HashMap<String, Integer> bogieCapacityMap = new HashMap<>();
+        // Add bogies
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 54));
+        bogies.add(new Bogie("First Class", 24));
 
-        // Add bogie capacities
-        bogieCapacityMap.put("Sleeper", 72);
-        bogieCapacityMap.put("AC Chair", 54);
-        bogieCapacityMap.put("First Class", 24);
+        System.out.println("Before Sorting:\n");
 
-        System.out.println("Bogie Capacity Details:\n");
-
-        // Iterate using entrySet()
-        for (Map.Entry<String, Integer> entry : bogieCapacityMap.entrySet()) {
-
-            System.out.println(
-                    entry.getKey() + " -> Capacity: " + entry.getValue()
-            );
+        for (Bogie bogie : bogies) {
+            System.out.println(bogie);
         }
 
-        System.out.println("\nUC6 bogie-capacity mapping completed...");
+        // Sort using Comparator
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+
+        System.out.println("\nAfter Sorting By Capacity:\n");
+
+        for (Bogie bogie : bogies) {
+            System.out.println(bogie);
+        }
+
+        System.out.println("\nUC7 sorting completed...");
     }
 }
